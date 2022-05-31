@@ -2,7 +2,7 @@
 
 # Project Preview
 
-![Alt Text]()
+![Alt Text](https://github.com/asknksk/Ios-Calculator/blob/master/images/calculator.PNG)
 
 ## Project Link
 
