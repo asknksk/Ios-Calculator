@@ -1,6 +1,7 @@
 let buttons = document.querySelector(".buttons");
 let screen = document.querySelector(".screen");
-
+let lastScreen = document.querySelector(".last-calculate");
+let numbers = 0;
 buttons.addEventListener("click", (event) => {
   //   console.log(event.target.innerText);
   //   console.log(
@@ -26,7 +27,7 @@ buttons.addEventListener("click", (event) => {
       })
     ) {
     } else if (
-      !["+", "-", "x", "÷", "="].every((e) => {
+      !["+", "-", "x", "÷", "."].every((e) => {
         return e != screen.innerText[screen.innerText.length - 1];
       })
     ) {
@@ -49,7 +50,14 @@ buttons.addEventListener("click", (event) => {
   } else if (event.target.innerText == ".") {
     dot();
   } else if (event.target.innerText == "=") {
-    calculate();
+    if (screen.innerText.endsWith(".")) {
+      screen.innerText = screen.innerText.slice(0, screen.innerText.length - 1);
+      calculate();
+    } else {
+      calculate();
+    }
+  } else if (event.target.innerText == "C") {
+    lastScreen.innerText = "";
   }
   // console.log(screen.innerText.endsWith("+") || screen.innerText.endsWith("-"));
 });
@@ -78,11 +86,15 @@ function dot() {
   ) {
   } else if (screen.innerText.endsWith(".")) {
     // console.log("girdi");
-    screen.innerText.replace(".", "a");
+    screen.innerText = screen.innerText.slice(0, screen.innerText.length - 1);
   } else if (screen.innerText == "") {
     screen.innerText = "0.";
   } else {
     screen.innerText += ".";
   }
 }
-function calculate() {}
+function calculate() {
+  lastScreen.innerHTML = screen.innerText;
+
+  screen.innerText = eval(screen.innerText.replace("x", "*").replace("÷", "/"));
+}
