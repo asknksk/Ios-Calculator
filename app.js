@@ -58,10 +58,13 @@ buttons.addEventListener("click", (event) => {
     }
   } else if (event.target.innerText == "C") {
     lastScreen.innerText = "";
+  } else if (event.target.innerText == "±") {
+    turnNegatif();
   }
   // console.log(screen.innerText.endsWith("+") || screen.innerText.endsWith("-"));
 });
 
+// Functions
 function reset() {
   screen.innerText = "";
 }
@@ -97,4 +100,19 @@ function calculate() {
   lastScreen.innerHTML = screen.innerText;
 
   screen.innerText = eval(screen.innerText.replace("x", "*").replace("÷", "/"));
+}
+
+function turnNegatif() {
+  if (
+    screen.innerHTML.includes("+") ||
+    screen.innerHTML.includes("x") ||
+    screen.innerHTML.includes("÷") ||
+    screen.innerText == ""
+  ) {
+  } else if (screen.innerText.startsWith("-")) {
+    console.log("girdi");
+    screen.innerText = screen.innerText.slice(1, screen.innerText.length);
+  } else {
+    screen.innerText = "-".concat(screen.innerText);
+  }
 }
