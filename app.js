@@ -60,6 +60,7 @@ buttons.addEventListener("click", (event) => {
     lastScreen.innerText = "";
   } else if (event.target.innerText == "±") {
     turnNegatif();
+  } else {
   }
   // console.log(screen.innerText.endsWith("+") || screen.innerText.endsWith("-"));
 });
