@@ -18,7 +18,8 @@ buttons.addEventListener("click", (event) => {
   if (
     ["AC", "C", "±", "%", ".", "="].every((e) => {
       return e != event.target.innerText;
-    })
+    }) &&
+    event.target != buttons
   ) {
     if (
       screen.innerText == "" &&
@@ -60,9 +61,8 @@ buttons.addEventListener("click", (event) => {
     lastScreen.innerText = "";
   } else if (event.target.innerText == "±") {
     turnNegatif();
-  } else {
   }
-  // console.log(screen.innerText.endsWith("+") || screen.innerText.endsWith("-"));
+  console.log(event.target != buttons);
 });
 
 // Functions
