@@ -100,7 +100,9 @@ function dot() {
 function calculate() {
   lastScreen.innerHTML = screen.innerText;
 
-  screen.innerText = eval(screen.innerText.replace("x", "*").replace("÷", "/"));
+  screen.innerText = eval(
+    screen.innerText.replaceAll("x", "*").replaceAll("÷", "/")
+  );
 }
 
 function turnNegatif() {
