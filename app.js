@@ -3,18 +3,6 @@ let screen = document.querySelector(".screen");
 let lastScreen = document.querySelector(".last-calculate");
 let numbers = 0;
 buttons.addEventListener("click", (event) => {
-  //   console.log(event.target.innerText);
-  //   console.log(
-  //     ["AC", "±", "%", ".", "="].every((e) => {
-  //       return e != event.target.innerText;
-  //     })
-  //   );
-  // console.log(
-  //   ["+", "-", "x", "÷", "="].every((e) => {
-  //     return e != event.target.innerText[length - 1];
-  //   })
-  // );
-
   if (
     ["AC", "C", "±", "%", ".", "="].every((e) => {
       return e != event.target.innerText;
@@ -54,6 +42,7 @@ buttons.addEventListener("click", (event) => {
     if (screen.innerText.endsWith(".")) {
       screen.innerText = screen.innerText.slice(0, screen.innerText.length - 1);
       calculate();
+    } else if (screen.innerText == "") {
     } else {
       calculate();
     }
@@ -62,7 +51,6 @@ buttons.addEventListener("click", (event) => {
   } else if (event.target.innerText == "±") {
     turnNegatif();
   }
-  console.log(event.target != buttons);
 });
 
 // Functions
@@ -89,7 +77,7 @@ function dot() {
     screen.innerText.endsWith("÷")
   ) {
   } else if (screen.innerText.endsWith(".")) {
-    // console.log("girdi");
+
     screen.innerText = screen.innerText.slice(0, screen.innerText.length - 1);
   } else if (screen.innerText == "") {
     screen.innerText = "0.";
@@ -113,7 +101,7 @@ function turnNegatif() {
     screen.innerText == ""
   ) {
   } else if (screen.innerText.startsWith("-")) {
-    console.log("girdi");
+  
     screen.innerText = screen.innerText.slice(1, screen.innerText.length);
   } else {
     screen.innerText = "-".concat(screen.innerText);
