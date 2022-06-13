@@ -11,7 +11,7 @@ buttons.addEventListener("click", (event) => {
   ) {
     if (
       screen.innerText == "" &&
-      !["+", "-", "x", "÷", "="].every((e) => {
+      !["+", "-", "x", "÷", "=", "0"].every((e) => {
         return e != event.target.innerText;
       })
     ) {
@@ -70,6 +70,8 @@ function modulus() {
   }
 }
 function dot() {
+  let arr = [];
+  let max;
   if (
     screen.innerText.endsWith("+") ||
     screen.innerText.endsWith("-") ||
@@ -77,10 +79,21 @@ function dot() {
     screen.innerText.endsWith("÷")
   ) {
   } else if (screen.innerText.endsWith(".")) {
-
     screen.innerText = screen.innerText.slice(0, screen.innerText.length - 1);
   } else if (screen.innerText == "") {
     screen.innerText = "0.";
+  } else if (screen.innerText.includes(".")) {
+    arr.push(screen.innerText.lastIndexOf("+"));
+    arr.push(screen.innerText.lastIndexOf("-"));
+    arr.push(screen.innerText.lastIndexOf("x"));
+    arr.push(screen.innerText.lastIndexOf("÷"));
+    max = Math.max(...arr);
+    if (max > 0) {
+      if (screen.innerText.slice(max + 1).includes(".")) {
+      } else {
+        screen.innerText += ".";
+      }
+    }
   } else {
     screen.innerText += ".";
   }
@@ -101,7 +114,6 @@ function turnNegatif() {
     screen.innerText == ""
   ) {
   } else if (screen.innerText.startsWith("-")) {
-  
     screen.innerText = screen.innerText.slice(1, screen.innerText.length);
   } else {
     screen.innerText = "-".concat(screen.innerText);
