@@ -4,7 +4,6 @@
 
 ![Alt Text](https://github.com/asknksk/Ios-Calculator/blob/master/images/Animation_Preview.gif)
 
-
 ## Project Link
 
 <a href="https://asknksk.github.io/Ios-Calculator/" target="_blank">GitHub Link</a> to access my project.
